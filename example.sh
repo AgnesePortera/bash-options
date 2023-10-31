@@ -7,10 +7,12 @@ Help()
    # Display Help
    echo "Add description of the script functions here."
    echo
-   echo "Syntax: scriptTemplate [-g|h|v|V]"
+   echo "Syntax: scriptTemplate [-g|h|n|s|v|V]"
    echo "options:"
    echo "g     Print the GPL license notification."
    echo "h     Print this Help."
+   echo "n     Name parameter."
+   echo "s     Surname parameter."
    echo "v     Verbose mode."
    echo "V     Print software version and exit."
    echo
@@ -24,18 +26,21 @@ Help()
 
 # Set variables
 Name="world"
+Surname="earth"
 
 ############################################################
 # Process the input options. Add options as needed.        #
 ############################################################
 # Get the options
-while getopts ":hn:" option; do
+while getopts ":h:n:s:" option; do
    case $option in
       h) # display Help
          Help
          exit;;
       n) # Enter a name
          Name=$OPTARG;;
+      s) # Enter a surname
+         Surname=$OPTARG;;
      \?) # Invalid option
          echo "Error: Invalid option"
          exit;;
@@ -43,4 +48,4 @@ while getopts ":hn:" option; do
 done
 
 
-echo "hello $Name!"
+echo "hello $Name $Surname!"
